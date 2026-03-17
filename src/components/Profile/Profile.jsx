@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import "./Profile.css";
+import css from "./Profile.module.css";
+import { RiRadioButtonLine } from "react-icons/ri";
+import { CiWifiOff } from "react-icons/ci";
+import iconReact from "../../assets/react.svg";
 
 const Profile = ({
   name,
@@ -8,19 +11,36 @@ const Profile = ({
   status = "ofline",
   hasPhisicalAddress,
 }) => {
-  // console.log(props);
+  console.log(css);
 
   return (
     <div
-      className={clsx("profile", hasPhisicalAddress && "hasPhisicalAddress")}
+      className={clsx(
+        css.profile,
+        hasPhisicalAddress && css.hasPhisicalAddress,
+      )}
     >
-      <h2>
+      <img src={iconReact} alt="" />
+      <h2 className={css.title}>
         Name: {name}
         {hasPhisicalAddress && "🛖"}
       </h2>
-      <p>Phone: {phone}</p>
-      <p>Email: {email}</p>
-      <p>Status: {status === "online" ? "✅" : "❌"}</p>
+      <p className={css.title}>Phone: {phone}</p>
+      <p className={css.title}>Email: {email}</p>
+      <p
+        // className={clsx(
+        //   css.title,
+        //   status === "online" && css.online,
+        //   status === "offline" && css.offline,
+        // )}
+
+        className={clsx(css.title, {
+          [css.online]: status === "online",
+          [css.offline]: status === "offline",
+        })}
+      >
+        Status: {status === "online" ? <RiRadioButtonLine /> : <CiWifiOff />}
+      </p>
     </div>
   );
 };
