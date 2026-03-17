@@ -1,0 +1,12 @@
+.profile {
+  padding: 20px 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.profile.hasPhisicalAddress {
+  border: 2px solid rgb(175, 11, 156);
+  background-color: rgba(175, 11, 156, 0.2);
+}
